@@ -1,18 +1,34 @@
 var fs = require("fs"),
-    path = process.argv[2];
+    path = "buses/"; // folder
 
-var data = (''+fs.readFileSync(path)).split('\n');
+function parse(filePath) {
+  var result = {};
+  var data = (''+fs.readFileSync(filePath)).split('\n');
 
-var result = data[0]+'\n';
-for (var i = 1; i < data.length; i++) {
-  data[i] = data[i].split(' ');
-  result += data[i][0];
-  for (var j = 1; j < data[i].length; j++) {
-    result += ' ' + (parseInt(data[i][j].split(":")[0]) * 60 + parseInt(data[i][j].split(":")[1]));
+  // save key
+
+  for (var i = 0; i < data.length; i++) {
+    data[i] = data[i].split(' ');
+    key = data[i][0].split("_").join(" ");
+    result[key] = [];
+    for (var j = 1; j < data[i].length; j++) {
+      result[key].push(data[i][j]);
+    }
   }
-  result += '\n'
+
+  return result
 }
 
-console.log(result);
-var f = fs.createWriteStream(process.argv[3]);
-f.write(result);
+var result = {};
+var list = fs.readdirSync(path);
+list.sort(function(a, b){return parseInt(a) - parseInt(b)});
+console.log(list);
+
+var f = fs.createWriteStream("buses.json");
+f.write("{");
+
+for (var i = 0; i < list.length; i++) {
+  f.write("\""+list[i]+"\":"+JSON.stringify(parse("buses/" + list[i])));
+  if (i != list.length - 1) f.write(",")
+}
+f.write("}");
