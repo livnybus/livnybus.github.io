@@ -8,13 +8,17 @@ if ("serviceWorker" in navigator) {
   }).catch(function(error) {
     console.log('Ошибка при регистрации service worker-а:', error)
   });
+
+  navigator.serviceWorker.addEventListener("message", function(event){
+    alert(event.data.msg);
+  });
 }
 
 
 var buses = [], listNames = [];
 
 function init() {
-  load('buses.json', function(err, data) {
+  load('dist/buses.json', function(err, data) {
     if (err) throw err;
     buses = data;
 

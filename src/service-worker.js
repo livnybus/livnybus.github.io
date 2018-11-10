@@ -1,4 +1,4 @@
-var CACHE = 'v2';
+var CACHE = 'v1';
 
 self.addEventListener('install', function(event){
   // console.log("The service worker is being installed.");
@@ -8,8 +8,6 @@ self.addEventListener('install', function(event){
 });
 
 self.addEventListener("activate", function(event) {
-  console.log("Activating serviceWorker", CACHE);
-
   //getting all keys from caches
   event.waitUntil(caches.keys().then(function(cacheNames) {
 
@@ -58,9 +56,9 @@ function precache() {
   return caches.open(CACHE).then(function(cache) {
     return cache.addAll([
       "./index.html",
-      "./main.js",
-      "./style.css",
-      "./buses.json"
+      "./dist/main-min.js",
+      "./dist/style-min.css",
+      "./dist/buses.json"
     ]);
   });
 }
