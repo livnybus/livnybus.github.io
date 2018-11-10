@@ -1,7 +1,7 @@
 'use strict';
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js", {
+  navigator.serviceWorker.register("sw-min.js", {
     scope : "./"
   }).then(function(registration) {
     console.log('Service worker зарегистрирован:', registration);
@@ -10,16 +10,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-/*
-check list:
-+ load
-- parse
-+ init
-- search
-- update
-- draw
-
-*/
 
 var buses = [], listNames = [];
 
@@ -81,7 +71,6 @@ function search(arr, now) {
 function render() {
   for (var el = 0; el < listNames.length; el++) {
     var stations = [], d = new Date(), now = (d.getUTCHours()+3) * 60 + d.getUTCMinutes();
-    console.log(buses[listNames[el]])
 
     // for station get closest time
     for (var name in buses[listNames[el]]) {
@@ -100,7 +89,6 @@ function render() {
     for (var i = 0; i < stations.length; i++) {
       draw(listNames[el], stations[i].name, stations[i].time);
     }
-    console.log(stations);
   }
 }
 
@@ -110,5 +98,7 @@ function draw(name, dest, time) {
   text += '</time></td></tr>';
   layout.innerHTML += text;
 }
+
+setInterval(render, 10000);
 
 init();
