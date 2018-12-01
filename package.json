@@ -1,0 +1,19 @@
+{
+  "name": "schedule-pwa",
+  "version": "0.3.0",
+  "description": "check bus schedule",
+  "main": "serial.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vadacpp/schedule-pwa.git"
+  },
+  "author": "vadacpp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vadacpp/schedule-pwa/issues"
+  },
+  "homepage": "https://github.com/vadacpp/schedule-pwa#readme"
+}
