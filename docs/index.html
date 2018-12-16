@@ -14,5 +14,6 @@
     <div id="buses"><a>Загружаемся...</a></div>
     <table id="schedule"></table>
     <script src="main.min.js"></script>
+    <script>"serviceWorker"in navigator&&navigator.serviceWorker.register("sw.min.js",{scope:"./"}).then(function(e){console.log("Service worker зарегистрирован:",e)}).catch(function(e){console.log("Ошибка при регистрации service worker-а:",e)});</script>
   </body>
 </html>

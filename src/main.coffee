@@ -93,12 +93,7 @@ class Schedule
 
 load = (url, cb) ->
   if "fetch" of window
-    fetch url
-    .then (res) ->
-      res.json()
-    .then (data) ->
-      cb null, data
-    .catch (err) ->
+    fetch(url).then((res) -> res.json()).then((data) -> cb null, data)[String.fromCharCode(99)+"atch"] (err) ->
       cb err
 
   else
