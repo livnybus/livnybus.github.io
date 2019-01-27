@@ -1,10 +1,8 @@
 {
-  // Required
   "manifest_version": 2,
   "name": "Маршруточки",
   "version": "2.0.0",
 
-  // Recommended
   "default_locale": "ru",
   "description": "Маршруточки в городе Ливны",
   "icons": {
