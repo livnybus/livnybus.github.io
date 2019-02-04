@@ -2,8 +2,15 @@ CACHE = "v2"
 
 
 precache = () ->
-  caches.open(CACHE).then (c) -> 
-    c.addAll ["./index.html",
+  caches.open(CACHE).then (c) ->
+    fetch("./assets/all.json")
+    .then (r) ->
+      return r.json()
+    .then (d) ->
+      res.map (e) -> './assets/bus/' + e
+
+
+    c.addAll res.concat ["./index.html",
       "./main.js",
       "./style.css",
      "./sw.js",
