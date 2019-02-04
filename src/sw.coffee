@@ -3,17 +3,12 @@ CACHE = "v2"
 
 precache = () ->
   caches.open(CACHE).then (c) -> 
-    res.push "/index.html"
-    res.push "/main.js"
-    res.push "/style.js"
-    res.push "/sw.js"
-    res.push "/assets/all.json"
-
     c.addAll ["./index.html",
       "./main.js",
       "./style.js",
      "./sw.js",
-      "./assets/all.json"]
+      "./assets/all.json"
+    ]
 
 fromCache = (req) ->
   caches.open(CACHE).then (c) ->
