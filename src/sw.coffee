@@ -7,10 +7,10 @@ precache = () ->
     .then (r) ->
       return r.json()
     .then (d) ->
-      res.map (e) -> './assets/bus/' + e
+      d.map (e) -> './assets/bus/' + e
 
 
-    c.addAll res.concat ["./index.html",
+    c.addAll d.concat ["./index.html",
       "./main.js",
       "./style.css",
      "./sw.js",
