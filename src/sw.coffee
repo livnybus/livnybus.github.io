@@ -4,10 +4,11 @@ CACHE = "v2"
 precache = () ->
   caches.open(CACHE).then (c) ->
     c.addAll [
-      "./index.html",
-      "./main.min.js",
-      "./style.min.js",
-      "./buses.json"
+      "/index.html",
+      "/main.js",
+      "/style.js",
+      "/assets/"
+      "/assets/bus"
     ]
 
 fromCache = (req) ->
