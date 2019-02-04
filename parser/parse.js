@@ -1,0 +1,1 @@
+(function(){require("fs")}).call(this);

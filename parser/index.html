@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Schedule Generator</title>
+</head>
+<body>
+  Name:
+  <input type="text" id="name" placeholder="name"><br>
+  Pauses:
+  <div id="pauses">
+    <input type="text" placeholder="begin"><input type="text" placeholder="end"><br>
+  </div>
+  <button id="add">+</button><br>
+
+  <textarea id="schedule"></textarea>
+  <pre id="output">Symef</pre>
+  <script>
+    window.onload = function() {
+      var name = document.getElementById("name");
+      var pauses = document.getElementById("pauses");
+      var add = document.getElementById("add");
+      var schedule = document.getElementById("schedule");
+      var output = document.getElementById("output");
+
+      var posPause = 0;
+
+
+      console.log(name);
+      var res = {
+        name: "",
+        pauses: {
+          begin:[],
+          end:[],
+        }
+      };
+
+      function draw() {
+        var str = JSON.stringify(res);
+        var out = '';
+        var shift = 0;
+        
+        for (var i = 0; i < str.length; i++) {
+          if (str[i] == '{') {
+            shift += 2;
+            out += '{\n'
+            for (var j = 0; j < shift; j++) 
+              out += ' ';
+          } else if (str[i] == '}') {
+            shift -= 2;
+            out += '\n'
+            for (var j = 0; j < shift; j++) 
+              out += ' ';
+            out += '}';
+          } else if (str[i] == ',') {
+            out += ',\n';
+            for (var j = 0; j < shift; j++) 
+              out += ' ';
+          } else if (str[i] == ':') {
+            out += ': ';
+          } else {
+            out += str[i];
+          }
+        }
+
+        output.innerText = out;
+      }
+
+      draw();
+
+      name.oninput = function(e) {
+        res['name'] = e.target.value;
+        draw();
+      };
+
+      function addPause(){
+        var pointer = posPause;
+       //<input type="text" placeholder="begin"><input type="text" placeholder="end"><br> 
+        var hb = document.createElement("input");
+        hb.setAttribute("type", "text");
+        hb.setAttribute("placeholder", "bhour");
+
+        hb.oninput = function(e) {
+          res['pauses']['begin'][pointer] = e.target.value;
+          draw();
+        }
+
+        var mb = document.createElement("input");
+        hb.setAttribute("type", "text");
+        hb.setAttribute("placeholder", "bmin");
+
+        var he = document.createElement("input");
+        hb.setAttribute("type", "text");
+        hb.setAttribute("placeholder", "ehour");
+
+        var me = document.createElement("input");
+        hb.setAttribute("type", "text");
+        hb.setAttribute("placeholder", "emin");
+
+        var br = document.createElement("br")
+      }
+
+      addPause();
+
+      console.log(pauses)
+    }
+  </script>
+</body>
+</html>

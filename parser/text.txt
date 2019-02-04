@@ -1,0 +1,22 @@
+console.log '''in'''.split(":").join("-")
+
+
+str = '''in'''
+
+data = str.split("\n").map((e)->return e.split(","))
+
+res = {times:[], stations: [], ids: []}
+
+for e, k in data
+  res.ids.push e[0]
+  for t in e[1..]
+    if (t != '' and t != '-' and t != '—')
+      console.log k, t
+      res.stations.push k
+      tt = t.split(" ").join('').split("-")
+      hh = parseInt tt[0]
+      mm = parseInt tt[1]
+      res.times.push hh*60+mm
+  
+  
+console.log JSON.stringify(res)[1..-2]

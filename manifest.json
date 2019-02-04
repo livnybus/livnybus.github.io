@@ -1,15 +1,14 @@
 {
-  "manifest_version": 2,
-  "name": "Маршрутки",
+  "name": "Маршруточки",
+  "short_name": "Маршрутки",
   "start_url": ".",
-  "version": "2.0.0",
   "display": "standalone",
   "background_color": "#333",
-  "scope": "/schedule-pwa/",
-  "start_url": "/schedule-pwa/index.html",
-  "default_locale": "ru",
-  "description": "Маршруточки в городе Ливны",
-  "icons": {
-    "128":"apple-icon.png"
-  }
+  "scope": "/",
+  "description": "Общественный транспорт города Ливны",
+  "icons": [{
+    "src": "assets/svg-icon.svg",
+    "sizes": "48x48 72x72 96x96 128x128 256x256",
+    "type": "image/png"
+  }]
 }

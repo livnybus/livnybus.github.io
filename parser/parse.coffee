@@ -1,0 +1,2 @@
+fs = require "fs"
+

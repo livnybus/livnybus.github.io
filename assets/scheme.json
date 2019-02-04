@@ -1,0 +1,11 @@
+{
+  "name": "string",
+  "pauses" : {
+    "b": ["time"],
+    "e": ["time"]
+  }, 
+
+  "times": ["time", "time", "time", ...],
+  "dest": ["string", "string", ...],
+  "stations": ["id", "id", "id"]
+}
