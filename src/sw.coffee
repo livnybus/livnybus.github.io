@@ -5,7 +5,7 @@ precache = () ->
   caches.open(CACHE).then (c) -> 
     c.addAll ["./index.html",
       "./main.js",
-      "./style.js",
+      "./style.css",
      "./sw.js",
       "./assets/all.json"
     ]
