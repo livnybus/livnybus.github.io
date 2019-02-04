@@ -122,9 +122,6 @@ countBuses = () ->
     else countset[bus.name] = 1
 
 drawList = () ->
-  console.log "draw list..."
-  console.log countset
-
 
   out = '<div class="row">'
   last = 'ars'

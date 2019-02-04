@@ -7,7 +7,8 @@ precache = () ->
     .then (r) ->
       return r.json()
     .then (d) ->
-      c.addAll d.map((e) -> './assets/bus/' + e).concat ["./index.html",
+      c.addAll d.map((e) -> './assets/bus/' + e).concat [
+        "./index.html",
         "./main.js",
         "./style.css",
         "./sw.js",
@@ -21,7 +22,7 @@ fromCache = (req) ->
 
 update = (req) ->
   caches.open(CACHE).then (c) ->
-    fetch(request).then (res) ->
+    fetch(req).then (res) ->
       cache.put req, res
 
 self.addEventListener "install", (e) ->
