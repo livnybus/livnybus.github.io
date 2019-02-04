@@ -10,12 +10,12 @@ precache = () ->
       d.map (e) -> './assets/bus/' + e
 
 
-    c.addAll d.concat ["./index.html",
-      "./main.js",
-      "./style.css",
-     "./sw.js",
-      "./assets/all.json"
-    ]
+      c.addAll d.concat ["./index.html",
+        "./main.js",
+        "./style.css",
+        "./sw.js",
+        "./assets/all.json"
+      ]
 
 fromCache = (req) ->
   caches.open(CACHE).then (c) ->
