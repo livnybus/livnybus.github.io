@@ -1,4 +1,4 @@
-CACHE = "v2"
+CACHE = "v1"
 
 
 precache = () ->
@@ -7,7 +7,7 @@ precache = () ->
     .then (r) ->
       return r.json()
     .then (d) ->
-      c.addAll d.map((e) -> './assets/bus/' + e).concat [
+      return c.addAll d.map((e) -> './assets/bus/' + e).concat [
         "./index.html",
         "./main.js",
         "./style.css",
@@ -23,7 +23,7 @@ fromCache = (req) ->
 update = (req) ->
   caches.open(CACHE).then (c) ->
     fetch(req).then (res) ->
-      cache.put req, res
+      c.put req, res
 
 self.addEventListener "install", (e) ->
   e.waitUntil do precache
@@ -35,5 +35,5 @@ self.addEventListener "activate", (e) ->
         caches.delete name
 
 self.addEventListener "fetch", (e) ->
-  e.respondWith fromCache e.request
+  e.respondWith fromCache(e.request)
   e.waitUntil update e.request

@@ -10,5 +10,9 @@
     "src": "assets/svg-icon.svg",
     "sizes": "48x48 72x72 96x96 128x128 256x256",
     "type": "image/svg"
+  }, {
+    "src": "assets/icon-144.png",
+    "sizes": "144x144",
+    "type": "image/png"
   }]
 }
